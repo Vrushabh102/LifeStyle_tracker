@@ -302,7 +302,7 @@ class CardWidgetThree extends StatelessWidget {
                       ),
                     ),
 
-                    Image.asset(iconPath),
+                    const Icon(Icons.lock_outline),
                   ],
                 )
               ],
