@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lifestyle_tracker/Widgets/card_widget.dart';
 import 'package:lifestyle_tracker/Widgets/shortcut_widget.dart';
@@ -12,6 +13,15 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   int bottomNavBarIndex = 0;
+
+  final List<Image> navIcons = [
+    Image.asset('assets/icons/Home.png'),
+    Image.asset('assets/icons/Book-open.png'),
+    Image.asset('assets/icons/hub.png'),
+    Image.asset('assets/icons/Comment.png'),
+    Image.asset('assets/icons/Profile.png'),
+
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -278,30 +288,28 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         type: BottomNavigationBarType.fixed,
         selectedItemColor: const Color(0xFF598BED),
-        items: const [
-          BottomNavigationBarItem(
-            backgroundColor: Colors.grey,
+        selectedIconTheme: const IconThemeData(
+          color: Color(0xFF598BED)
+        ),
+        items: [
+          const BottomNavigationBarItem(
               icon: Icon(Icons.home_filled),
               label: 'Home'
           ),
-          BottomNavigationBarItem(
-            backgroundColor: Colors.grey,
-            icon: Icon(Icons.book),
+          const BottomNavigationBarItem(
+              icon: Icon(Icons.menu_book_rounded),
             label: 'Learn'
           ),
           BottomNavigationBarItem(
-              backgroundColor: Colors.grey,
-              icon: Icon(Icons.hub_rounded),
+              icon: navIcons[2],
               label: 'Hub'
           ),
           BottomNavigationBarItem(
-              backgroundColor: Colors.grey,
-              icon: Icon(Icons.chat),
+              icon: navIcons[3],
               label: 'Chat'
           ),
           BottomNavigationBarItem(
-              backgroundColor: Colors.grey,
-              icon: Icon(Icons.circle),
+            icon: navIcons[4],
               label: 'Profile',
           ),
         ],
