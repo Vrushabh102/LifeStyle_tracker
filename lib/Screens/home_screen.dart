@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lifestyle_tracker/Widgets/card_widget.dart';
 import 'package:lifestyle_tracker/Widgets/shortcut_widget.dart';
@@ -11,91 +10,118 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  int bottomNavBarIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: Image.asset('assets/icons/drawer.png'),
         backgroundColor: const Color.fromARGB(246, 249, 254, 255),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.chat_bubble)),
+          IconButton(onPressed: () {}, icon: Image.asset('assets/icons/chats.png')),
           IconButton(
-              onPressed: () {}, icon: const Icon(Icons.notifications_none)),
+              onPressed: () {}, icon: Image.asset('assets/icons/notifications.png')),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+      body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               color: const Color.fromARGB(246, 249, 254, 255),
-              child: const Column(
+              child: Column(
+                // Intro and Shortcuts
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Hello, Priya!',
-                    style: TextStyle(
-                      fontSize: 20,
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(0, 8, 0, 2),
+                    child: Text(
+                      'Hello, Priya!',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontFamily: 'Lora',
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                  Text('What do you want to learn today?'),
-                  SizedBox(height: 30),
+                  const Padding(
+                    padding: EdgeInsets.only(bottom: 32),
+                    child: Text(
+                        'What do you want to learn today?',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                  ),
                   Row(
                     children: [
                       Expanded(
                           child: BuildShortcut(
-                              name: 'Programs', leadingIcon: Icons.book)),
-                      SizedBox(width: 10),
+                              name: 'Programs',
+                            leading : 'assets/icons/Book-mark.png',
+                          ),
+                      ),
+                      const SizedBox(width: 10),
                       Expanded(
                           child: BuildShortcut(
-                              name: 'Get Help', leadingIcon: Icons.help)),
+                              name: 'Get Help', leading: 'assets/icons/help-circle.png')),
                     ],
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Row(
                     children: [
                       Expanded(
                           child: BuildShortcut(
                               name: 'Learn',
-                              leadingIcon: Icons.menu_book_rounded)),
-                      SizedBox(width: 10),
+                              leading: 'assets/icons/Book-open.png')),
+                      const SizedBox(width: 10),
                       Expanded(
                           child: BuildShortcut(
                               name: 'DD Tracker',
-                              leadingIcon: Icons.account_box_outlined)),
-                      SizedBox(height: 10),
+                              leading: 'assets/icons/trello.png')),
+                      const SizedBox(height: 10),
                     ],
                   ),
                 ],
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Programs for you',
-                        style: TextStyle(fontSize: 18),
-                      ),
-                      Row(
-                        children: [
-                          Text('View all'),
-                          SizedBox(width: 5),
-                          Icon(
-                            Icons.arrow_forward_outlined,
-                            size: 15,
-                          ),
-                        ],
-                      )
-                    ],
+                  const SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 56),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          'Programs for you',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        Row(
+                          children: [
+                            const Text(
+                              'View all',
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500
+                              ),
+                            ),
+                            const SizedBox(width: 5),
+                            Image.asset('assets/icons/Arrow.png')
+                          ],
+                        )
+                      ],
+                    ),
                   ),
-                  SizedBox(height: 10),
-                  SingleChildScrollView(
+                  const SizedBox(height: 10),
+                  const SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: [
@@ -119,10 +145,173 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-            )
+            ),
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Events and experiences',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          const Text(
+                            'View all',
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500
+                            ),
+                          ),
+                          const SizedBox(width: 5),
+                          Image.asset('assets/icons/Arrow.png')
+                        ],
+                      )
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  const SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row (
+                      children: [
+                        CardWidgetTwo(
+                          titleText: 'BABYCARE',
+                          description: 'Understanding of human behaviour',
+                          information: '13 Feb, Sunday',
+                          buttonText: 'Book',
+                          imagePath: 'assets/g21.png',
+                          backgroundColorHex: 0xFFDDE3C2,
+                        ),
+                        SizedBox(width: 16,),
+                        CardWidgetTwo(
+                          titleText: 'BABYCARE',
+                          description: 'Understanding of human behaviour',
+                          information: '13 Feb, Sunday',
+                          buttonText: 'Book',
+                          imagePath:  'assets/g21.png',
+                          backgroundColorHex: 0xFFFFF0D3,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 10),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Lessons for you',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          const Text(
+                            'View all',
+                            style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500
+                            ),
+                          ),
+                          const SizedBox(width: 5),
+                          Image.asset('assets/icons/Arrow.png')
+                        ],
+                      )
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  const SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row (
+                      children: [
+                        CardWidgetThree(
+                          titleText: 'BABYCARE',
+                          description: 'Understanding of human behaviour',
+                          information: '3 min',
+                          imagePath: 'assets/g21.png',
+                          backgroundColorHex: 0xFFDDE3C2,
+                          iconPath: 'assets/lock.png',
+                        ),
+                        SizedBox(width: 16,),
+                        CardWidgetThree(
+                          titleText: 'BABYCARE',
+                          description: 'Understanding of human behaviour',
+                          information: '3 min',
+                          iconPath: 'assets/lock.png',
+                          imagePath: 'assets/g21.png',
+                          backgroundColorHex: 0xFFDDE3C2,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
+
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: bottomNavBarIndex,
+        onTap: (index) {
+          setState(() {
+            bottomNavBarIndex = index;
+          });
+        },
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: const Color(0xFF598BED),
+        items: const [
+          BottomNavigationBarItem(
+            backgroundColor: Colors.grey,
+              icon: Icon(Icons.home_filled),
+              label: 'Home'
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: Colors.grey,
+            icon: Icon(Icons.book),
+            label: 'Learn'
+          ),
+          BottomNavigationBarItem(
+              backgroundColor: Colors.grey,
+              icon: Icon(Icons.hub_rounded),
+              label: 'Hub'
+          ),
+          BottomNavigationBarItem(
+              backgroundColor: Colors.grey,
+              icon: Icon(Icons.chat),
+              label: 'Chat'
+          ),
+          BottomNavigationBarItem(
+              backgroundColor: Colors.grey,
+              icon: Icon(Icons.circle),
+              label: 'Profile',
+          ),
+        ],
+      ),
+
+      drawer: const Drawer(
+        // DO NOTING
+      ),
+
+
     );
   }
 }
